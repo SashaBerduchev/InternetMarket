@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="610c25efb73d43e79ae668211daa0d15" Name="Diagram1" ZoomLevel="63" >
+        <EntityTypeShape EntityType="InternetMarketEDMX.Category" Width="1.5" PointX="2.375" PointY="0.75" />
+        <EntityTypeShape EntityType="InternetMarketEDMX.Brend" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InternetMarketEDMX.NameProdact" Width="1.5" PointX="2.5" PointY="3.375" />
+        <EntityTypeShape EntityType="InternetMarketEDMX.Cost" Width="1.5" PointX="4.875" PointY="3.375" />
+        <EntityTypeShape EntityType="InternetMarketEDMX.User" Width="1.5" PointX="0.5" PointY="2.625" />
+        <EntityTypeShape EntityType="InternetMarketEDMX.Admin" Width="1.5" PointX="6.75" PointY="1" />
+        <EntityTypeShape EntityType="InternetMarketEDMX.Basket" Width="1.5" PointX="3.5" PointY="7" />
+        <AssociationConnector Association="InternetMarketEDMX.CategoryBrend" />
+        <AssociationConnector Association="InternetMarketEDMX.CategoryNameProdact" />
+        <AssociationConnector Association="InternetMarketEDMX.BrendNameProdact" />
+        <AssociationConnector Association="InternetMarketEDMX.NameProdactCost" />
+        <AssociationConnector Association="InternetMarketEDMX.UserBrend" />
+        <AssociationConnector Association="InternetMarketEDMX.UserNameProdact" />
+        <AssociationConnector Association="InternetMarketEDMX.UserCost" />
+        <AssociationConnector Association="InternetMarketEDMX.AdminBrend" />
+        <AssociationConnector Association="InternetMarketEDMX.AdminCategory" />
+        <AssociationConnector Association="InternetMarketEDMX.AdminNameProdact" />
+        <AssociationConnector Association="InternetMarketEDMX.AdminCost" />
+        <AssociationConnector Association="InternetMarketEDMX.NameProdactBasket" />
+        <AssociationConnector Association="InternetMarketEDMX.CostBasket" />
+        <AssociationConnector Association="InternetMarketEDMX.UserBasket" />
+        <AssociationConnector Association="InternetMarketEDMX.AdminBasket" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

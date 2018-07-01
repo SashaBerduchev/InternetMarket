@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="InternetMarketEDMX" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="InternetMarketEDMXContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CategorySet" EntityType="InternetMarketEDMX.Category" />
+    <EntitySet Name="BrendSet" EntityType="InternetMarketEDMX.Brend" />
+    <EntitySet Name="NameProdactSet" EntityType="InternetMarketEDMX.NameProdact" />
+    <EntitySet Name="CostSet" EntityType="InternetMarketEDMX.Cost" />
+    <EntitySet Name="UserSet" EntityType="InternetMarketEDMX.User" />
+    <EntitySet Name="AdminSet" EntityType="InternetMarketEDMX.Admin" />
+    <EntitySet Name="BasketSet" EntityType="InternetMarketEDMX.Basket" />
+    <AssociationSet Name="CategoryBrend" Association="InternetMarketEDMX.CategoryBrend">
+      <End Role="Category" EntitySet="CategorySet" />
+      <End Role="Brend" EntitySet="BrendSet" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryNameProdact" Association="InternetMarketEDMX.CategoryNameProdact">
+      <End Role="Category" EntitySet="CategorySet" />
+      <End Role="NameProdact" EntitySet="NameProdactSet" />
+    </AssociationSet>
+    <AssociationSet Name="BrendNameProdact" Association="InternetMarketEDMX.BrendNameProdact">
+      <End Role="Brend" EntitySet="BrendSet" />
+      <End Role="NameProdact" EntitySet="NameProdactSet" />
+    </AssociationSet>
+    <AssociationSet Name="NameProdactCost" Association="InternetMarketEDMX.NameProdactCost">
+      <End Role="NameProdact" EntitySet="NameProdactSet" />
+      <End Role="Cost" EntitySet="CostSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserBrend" Association="InternetMarketEDMX.UserBrend">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Brend" EntitySet="BrendSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserNameProdact" Association="InternetMarketEDMX.UserNameProdact">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="NameProdact" EntitySet="NameProdactSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserCost" Association="InternetMarketEDMX.UserCost">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Cost" EntitySet="CostSet" />
+    </AssociationSet>
+    <AssociationSet Name="AdminBrend" Association="InternetMarketEDMX.AdminBrend">
+      <End Role="Admin" EntitySet="AdminSet" />
+      <End Role="Brend" EntitySet="BrendSet" />
+    </AssociationSet>
+    <AssociationSet Name="AdminCategory" Association="InternetMarketEDMX.AdminCategory">
+      <End Role="Admin" EntitySet="AdminSet" />
+      <End Role="Category" EntitySet="CategorySet" />
+    </AssociationSet>
+    <AssociationSet Name="AdminNameProdact" Association="InternetMarketEDMX.AdminNameProdact">
+      <End Role="Admin" EntitySet="AdminSet" />
+      <End Role="NameProdact" EntitySet="NameProdactSet" />
+    </AssociationSet>
+    <AssociationSet Name="AdminCost" Association="InternetMarketEDMX.AdminCost">
+      <End Role="Admin" EntitySet="AdminSet" />
+      <End Role="Cost" EntitySet="CostSet" />
+    </AssociationSet>
+    <AssociationSet Name="NameProdactBasket" Association="InternetMarketEDMX.NameProdactBasket">
+      <End Role="NameProdact" EntitySet="NameProdactSet" />
+      <End Role="Basket" EntitySet="BasketSet" />
+    </AssociationSet>
+    <AssociationSet Name="CostBasket" Association="InternetMarketEDMX.CostBasket">
+      <End Role="Cost" EntitySet="CostSet" />
+      <End Role="Basket" EntitySet="BasketSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserBasket" Association="InternetMarketEDMX.UserBasket">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Basket" EntitySet="BasketSet" />
+    </AssociationSet>
+    <AssociationSet Name="AdminBasket" Association="InternetMarketEDMX.AdminBasket">
+      <End Role="Admin" EntitySet="AdminSet" />
+      <End Role="Basket" EntitySet="BasketSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCategory" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Brend" Relationship="InternetMarketEDMX.CategoryBrend" FromRole="Category" ToRole="Brend" />
+    <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.CategoryNameProdact" FromRole="Category" ToRole="NameProdact" />
+    <NavigationProperty Name="Admin" Relationship="InternetMarketEDMX.AdminCategory" FromRole="Category" ToRole="Admin" />
+  </EntityType>
+  <EntityType Name="Brend">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Category" Relationship="InternetMarketEDMX.CategoryBrend" FromRole="Brend" ToRole="Category" />
+    <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.BrendNameProdact" FromRole="Brend" ToRole="NameProdact" />
+    <NavigationProperty Name="User" Relationship="InternetMarketEDMX.UserBrend" FromRole="Brend" ToRole="User" />
+    <NavigationProperty Name="Admin" Relationship="InternetMarketEDMX.AdminBrend" FromRole="Brend" ToRole="Admin" />
+  </EntityType>
+  <EntityType Name="NameProdact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameProduct" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Category" Relationship="InternetMarketEDMX.CategoryNameProdact" FromRole="NameProdact" ToRole="Category" />
+    <NavigationProperty Name="Brend" Relationship="InternetMarketEDMX.BrendNameProdact" FromRole="NameProdact" ToRole="Brend" />
+    <NavigationProperty Name="Cost" Relationship="InternetMarketEDMX.NameProdactCost" FromRole="NameProdact" ToRole="Cost" />
+    <NavigationProperty Name="User" Relationship="InternetMarketEDMX.UserNameProdact" FromRole="NameProdact" ToRole="User" />
+    <NavigationProperty Name="Admin" Relationship="InternetMarketEDMX.AdminNameProdact" FromRole="NameProdact" ToRole="Admin" />
+    <NavigationProperty Name="Basket" Relationship="InternetMarketEDMX.NameProdactBasket" FromRole="NameProdact" ToRole="Basket" />
+  </EntityType>
+  <EntityType Name="Cost">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prise" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.NameProdactCost" FromRole="Cost" ToRole="NameProdact" />
+    <NavigationProperty Name="User" Relationship="InternetMarketEDMX.UserCost" FromRole="Cost" ToRole="User" />
+    <NavigationProperty Name="Admin" Relationship="InternetMarketEDMX.AdminCost" FromRole="Cost" ToRole="Admin" />
+    <NavigationProperty Name="Basket" Relationship="InternetMarketEDMX.CostBasket" FromRole="Cost" ToRole="Basket" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameUser" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Pass" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Brend" Relationship="InternetMarketEDMX.UserBrend" FromRole="User" ToRole="Brend" />
+    <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.UserNameProdact" FromRole="User" ToRole="NameProdact" />
+    <NavigationProperty Name="Cost" Relationship="InternetMarketEDMX.UserCost" FromRole="User" ToRole="Cost" />
+    <NavigationProperty Name="Basket" Relationship="InternetMarketEDMX.UserBasket" FromRole="User" ToRole="Basket" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameAdmin" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Brend" Relationship="InternetMarketEDMX.AdminBrend" FromRole="Admin" ToRole="Brend" />
+    <NavigationProperty Name="Category" Relationship="InternetMarketEDMX.AdminCategory" FromRole="Admin" ToRole="Category" />
+    <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.AdminNameProdact" FromRole="Admin" ToRole="NameProdact" />
+    <NavigationProperty Name="Cost" Relationship="InternetMarketEDMX.AdminCost" FromRole="Admin" ToRole="Cost" />
+    <NavigationProperty Name="Basket" Relationship="InternetMarketEDMX.AdminBasket" FromRole="Admin" ToRole="Basket" />
+    <Property Name="PasswordAdmin" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Basket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.NameProdactBasket" FromRole="Basket" ToRole="NameProdact" />
+    <NavigationProperty Name="Cost" Relationship="InternetMarketEDMX.CostBasket" FromRole="Basket" ToRole="Cost" />
+    <NavigationProperty Name="User" Relationship="InternetMarketEDMX.UserBasket" FromRole="Basket" ToRole="User" />
+    <NavigationProperty Name="Admin" Relationship="InternetMarketEDMX.AdminBasket" FromRole="Basket" ToRole="Admin" />
+  </EntityType>
+  <Association Name="CategoryBrend">
+    <End Type="InternetMarketEDMX.Category" Role="Category" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Brend" Role="Brend" Multiplicity="*" />
+  </Association>
+  <Association Name="CategoryNameProdact">
+    <End Type="InternetMarketEDMX.Category" Role="Category" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.NameProdact" Role="NameProdact" Multiplicity="*" />
+  </Association>
+  <Association Name="BrendNameProdact">
+    <End Type="InternetMarketEDMX.Brend" Role="Brend" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.NameProdact" Role="NameProdact" Multiplicity="*" />
+  </Association>
+  <Association Name="NameProdactCost">
+    <End Type="InternetMarketEDMX.NameProdact" Role="NameProdact" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Cost" Role="Cost" Multiplicity="*" />
+  </Association>
+  <Association Name="UserBrend">
+    <End Type="InternetMarketEDMX.User" Role="User" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Brend" Role="Brend" Multiplicity="*" />
+  </Association>
+  <Association Name="UserNameProdact">
+    <End Type="InternetMarketEDMX.User" Role="User" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.NameProdact" Role="NameProdact" Multiplicity="*" />
+  </Association>
+  <Association Name="UserCost">
+    <End Type="InternetMarketEDMX.User" Role="User" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Cost" Role="Cost" Multiplicity="*" />
+  </Association>
+  <Association Name="AdminBrend">
+    <End Type="InternetMarketEDMX.Admin" Role="Admin" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Brend" Role="Brend" Multiplicity="*" />
+  </Association>
+  <Association Name="AdminCategory">
+    <End Type="InternetMarketEDMX.Admin" Role="Admin" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Category" Role="Category" Multiplicity="*" />
+  </Association>
+  <Association Name="AdminNameProdact">
+    <End Type="InternetMarketEDMX.Admin" Role="Admin" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.NameProdact" Role="NameProdact" Multiplicity="*" />
+  </Association>
+  <Association Name="AdminCost">
+    <End Type="InternetMarketEDMX.Admin" Role="Admin" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Cost" Role="Cost" Multiplicity="*" />
+  </Association>
+  <Association Name="NameProdactBasket">
+    <End Type="InternetMarketEDMX.NameProdact" Role="NameProdact" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Basket" Role="Basket" Multiplicity="*" />
+  </Association>
+  <Association Name="CostBasket">
+    <End Type="InternetMarketEDMX.Cost" Role="Cost" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Basket" Role="Basket" Multiplicity="*" />
+  </Association>
+  <Association Name="UserBasket">
+    <End Type="InternetMarketEDMX.User" Role="User" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Basket" Role="Basket" Multiplicity="*" />
+  </Association>
+  <Association Name="AdminBasket">
+    <End Type="InternetMarketEDMX.Admin" Role="Admin" Multiplicity="1" />
+    <End Type="InternetMarketEDMX.Basket" Role="Basket" Multiplicity="*" />
+  </Association>
+</Schema>

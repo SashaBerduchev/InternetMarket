@@ -1,0 +1,15 @@
+D:\InternetMarket\InternetMarket\bin\Debug\InternetMarket.exe.config
+D:\InternetMarket\InternetMarket\bin\Debug\InternetMarket.exe
+D:\InternetMarket\InternetMarket\bin\Debug\InternetMarket.pdb
+D:\InternetMarket\InternetMarket\obj\Debug\MainWindow.g.cs
+D:\InternetMarket\InternetMarket\obj\Debug\App.g.cs
+D:\InternetMarket\InternetMarket\obj\Debug\InternetMarket_MarkupCompile.cache
+D:\InternetMarket\InternetMarket\obj\Debug\InternetMarket_MarkupCompile.lref
+D:\InternetMarket\InternetMarket\obj\Debug\MainWindow.baml
+D:\InternetMarket\InternetMarket\obj\Debug\InternetMarket.g.resources
+D:\InternetMarket\InternetMarket\obj\Debug\InternetMarket.Properties.Resources.resources
+D:\InternetMarket\InternetMarket\obj\Debug\InternetMarket.csproj.GenerateResource.cache
+D:\InternetMarket\InternetMarket\obj\Debug\InternetMarket.csproj.CoreCompileInputs.cache
+D:\InternetMarket\InternetMarket\obj\Debug\InternetMarket.exe
+D:\InternetMarket\InternetMarket\obj\Debug\InternetMarket.pdb
+D:\InternetMarket\InternetMarket\obj\Debug\InternetMarket.csprojAssemblyReference.cache

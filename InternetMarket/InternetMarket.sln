@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetMarket", "InternetMarket\InternetMarket.csproj", "{CFE21B27-10DC-448A-AAA0-2778C0BCDE7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SERVERInternetMarket", "SERVERInternetMarket\SERVERInternetMarket.csproj", "{820FCE2F-BF29-4796-A7DF-7B006C04461B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFE21B27-10DC-448A-AAA0-2778C0BCDE7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE21B27-10DC-448A-AAA0-2778C0BCDE7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE21B27-10DC-448A-AAA0-2778C0BCDE7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE21B27-10DC-448A-AAA0-2778C0BCDE7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{820FCE2F-BF29-4796-A7DF-7B006C04461B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{820FCE2F-BF29-4796-A7DF-7B006C04461B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{820FCE2F-BF29-4796-A7DF-7B006C04461B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{820FCE2F-BF29-4796-A7DF-7B006C04461B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE348568-5A62-41BF-8F25-FAD0E0FFF7A9}
+	EndGlobalSection
+EndGlobal
