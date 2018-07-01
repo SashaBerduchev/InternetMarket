@@ -20,23 +20,9 @@ namespace SERVERInternetMarket
     /// </summary>
     public partial class AdminLogin : Window
     {
-        IContract contract;
+        
         public AdminLogin()
         {
-
-            Uri address = new Uri("net.tcp://localhost:4000/IContract"); // ADDRESS.   (A)
-            // Указание привязки, как обмениваться сообщениями.
-            NetTcpBinding binding = new NetTcpBinding();        // BINDING.   (B)
-            // Указание контракта.
-            Type contract = typeof(IContract);                        // CONTRACT.  (C) 
-            // Создание провайдера Хостинга с указанием Сервиса.
-            ServiceHost host = new ServiceHost(typeof(MarketServis));
-            // Добавление "Конечной Точки".
-            host.AddServiceEndpoint(contract, binding, address);
-            // Начало ожидания прихода сообщений.
-            host.Open();
-
-
             InitializeComponent();
         }
 
@@ -52,7 +38,9 @@ namespace SERVERInternetMarket
             };
             contex.AdminSet.Add(loginset);
             contex.SaveChanges();
-            MessageBox.Show( "Your admin name save, please login now", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+            // MessageBox.Show( "Your admin name save, please login now", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+            MainWindow main = new MainWindow();
+            main.Show();
             LoginText.Text = null;
             PassText.Password = null;
         }

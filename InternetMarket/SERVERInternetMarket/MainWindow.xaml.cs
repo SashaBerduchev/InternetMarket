@@ -52,20 +52,21 @@ namespace SERVERInternetMarket
                 NameCategory = category
             };
             chanel.CategorySet.Add(categorynameset);
-            chanel.SaveChanges();
+           
 
             var brenddata = new Brend
             {
                 BrandName= brend
             };
             chanel.BrendSet.Add(brenddata);
-            chanel.SaveChanges();
+           
 
             var namedataset = new NameProdact
             {
                 NameProduct = name
             };
             chanel.NameProdactSet.Add(namedataset);
+
             chanel.SaveChanges();
         }
 

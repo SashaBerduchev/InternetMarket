@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="610c25efb73d43e79ae668211daa0d15" Name="Diagram1" ZoomLevel="63" >
+      <Diagram DiagramId="610c25efb73d43e79ae668211daa0d15" Name="Diagram1" ZoomLevel="108" >
         <EntityTypeShape EntityType="InternetMarketEDMX.Category" Width="1.5" PointX="2.375" PointY="0.75" />
         <EntityTypeShape EntityType="InternetMarketEDMX.Brend" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="InternetMarketEDMX.NameProdact" Width="1.5" PointX="2.5" PointY="3.375" />
@@ -19,14 +19,16 @@
         <AssociationConnector Association="InternetMarketEDMX.UserBrend" />
         <AssociationConnector Association="InternetMarketEDMX.UserNameProdact" />
         <AssociationConnector Association="InternetMarketEDMX.UserCost" />
-        <AssociationConnector Association="InternetMarketEDMX.AdminBrend" />
-        <AssociationConnector Association="InternetMarketEDMX.AdminCategory" />
-        <AssociationConnector Association="InternetMarketEDMX.AdminNameProdact" />
-        <AssociationConnector Association="InternetMarketEDMX.AdminCost" />
         <AssociationConnector Association="InternetMarketEDMX.NameProdactBasket" />
         <AssociationConnector Association="InternetMarketEDMX.CostBasket" />
         <AssociationConnector Association="InternetMarketEDMX.UserBasket" />
         <AssociationConnector Association="InternetMarketEDMX.AdminBasket" />
+        <AssociationConnector Association="InternetMarketEDMX.AdminUser" ManuallyRouted="true" >
+          <ConnectorPoint PointX="7.0909528955591172" PointY="1" />
+          <ConnectorPoint PointX="7.0909528955591172" PointY="0.46875009313225391" />
+          <ConnectorPoint PointX="1.2836796754876543" PointY="0.46875009313225391" />
+          <ConnectorPoint PointX="1.2836796754876543" PointY="2.625" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

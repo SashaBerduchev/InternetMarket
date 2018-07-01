@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("internetmarket.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("internetmarketdb.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("internetmarketdb_log.ldf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("internetmarketedmx.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("internetmarketedmx.edmx.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("internetmarketedmx.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("internetmarket_log.ldf")]
 
 

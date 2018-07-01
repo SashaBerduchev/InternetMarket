@@ -29,9 +29,9 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BrandName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Admin_Id" Type="int" Nullable="false" />
           <Property Name="Category_Id" Type="int" Nullable="false" />
           <Property Name="User_Id" Type="int" Nullable="false" />
-          <Property Name="Admin_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CategorySet">
           <Key>
@@ -47,9 +47,9 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Prise" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Admin_Id" Type="int" Nullable="false" />
           <Property Name="NameProdact_Id" Type="int" Nullable="false" />
           <Property Name="User_Id" Type="int" Nullable="false" />
-          <Property Name="Admin_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="NameProdactSet">
           <Key>
@@ -57,10 +57,10 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameProduct" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Admin_Id" Type="int" Nullable="false" />
           <Property Name="Category_Id" Type="int" Nullable="false" />
           <Property Name="Brend_Id" Type="int" Nullable="false" />
           <Property Name="User_Id" Type="int" Nullable="false" />
-          <Property Name="Admin_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserSet">
           <Key>
@@ -69,6 +69,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameUser" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Pass" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Admin_Id" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_AdminBasket">
           <End Role="AdminSet" Type="Self.AdminSet" Multiplicity="1" />
@@ -82,50 +83,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AdminBrend">
+        <Association Name="FK_AdminUser">
           <End Role="AdminSet" Type="Self.AdminSet" Multiplicity="1" />
-          <End Role="BrendSet" Type="Self.BrendSet" Multiplicity="*" />
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AdminSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BrendSet">
-              <PropertyRef Name="Admin_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AdminCategory">
-          <End Role="AdminSet" Type="Self.AdminSet" Multiplicity="1" />
-          <End Role="CategorySet" Type="Self.CategorySet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AdminSet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CategorySet">
-              <PropertyRef Name="Admin_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AdminCost">
-          <End Role="AdminSet" Type="Self.AdminSet" Multiplicity="1" />
-          <End Role="CostSet" Type="Self.CostSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AdminSet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CostSet">
-              <PropertyRef Name="Admin_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AdminNameProdact">
-          <End Role="AdminSet" Type="Self.AdminSet" Multiplicity="1" />
-          <End Role="NameProdactSet" Type="Self.NameProdactSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AdminSet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="NameProdactSet">
+            <Dependent Role="UserSet">
               <PropertyRef Name="Admin_Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -262,21 +227,9 @@
             <End Role="AdminSet" EntitySet="AdminSet" />
             <End Role="BasketSet" EntitySet="BasketSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_AdminBrend" Association="Self.FK_AdminBrend">
+          <AssociationSet Name="FK_AdminUser" Association="Self.FK_AdminUser">
             <End Role="AdminSet" EntitySet="AdminSet" />
-            <End Role="BrendSet" EntitySet="BrendSet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AdminCategory" Association="Self.FK_AdminCategory">
-            <End Role="AdminSet" EntitySet="AdminSet" />
-            <End Role="CategorySet" EntitySet="CategorySet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AdminCost" Association="Self.FK_AdminCost">
-            <End Role="AdminSet" EntitySet="AdminSet" />
-            <End Role="CostSet" EntitySet="CostSet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AdminNameProdact" Association="Self.FK_AdminNameProdact">
-            <End Role="AdminSet" EntitySet="AdminSet" />
-            <End Role="NameProdactSet" EntitySet="NameProdactSet" />
+            <End Role="UserSet" EntitySet="UserSet" />
           </AssociationSet>
           <AssociationSet Name="FK_BrendNameProdact" Association="Self.FK_BrendNameProdact">
             <End Role="BrendSet" EntitySet="BrendSet" />
@@ -359,22 +312,6 @@
             <End Role="User" EntitySet="UserSet" />
             <End Role="Cost" EntitySet="CostSet" />
           </AssociationSet>
-          <AssociationSet Name="AdminBrend" Association="InternetMarketEDMX.AdminBrend">
-            <End Role="Admin" EntitySet="AdminSet" />
-            <End Role="Brend" EntitySet="BrendSet" />
-          </AssociationSet>
-          <AssociationSet Name="AdminCategory" Association="InternetMarketEDMX.AdminCategory">
-            <End Role="Admin" EntitySet="AdminSet" />
-            <End Role="Category" EntitySet="CategorySet" />
-          </AssociationSet>
-          <AssociationSet Name="AdminNameProdact" Association="InternetMarketEDMX.AdminNameProdact">
-            <End Role="Admin" EntitySet="AdminSet" />
-            <End Role="NameProdact" EntitySet="NameProdactSet" />
-          </AssociationSet>
-          <AssociationSet Name="AdminCost" Association="InternetMarketEDMX.AdminCost">
-            <End Role="Admin" EntitySet="AdminSet" />
-            <End Role="Cost" EntitySet="CostSet" />
-          </AssociationSet>
           <AssociationSet Name="NameProdactBasket" Association="InternetMarketEDMX.NameProdactBasket">
             <End Role="NameProdact" EntitySet="NameProdactSet" />
             <End Role="Basket" EntitySet="BasketSet" />
@@ -388,8 +325,12 @@
             <End Role="Basket" EntitySet="BasketSet" />
           </AssociationSet>
           <AssociationSet Name="AdminBasket" Association="InternetMarketEDMX.AdminBasket">
+            <End EntitySet="AdminSet" Role="Admin" />
+            <End EntitySet="BasketSet" Role="Basket" />
+          </AssociationSet>
+          <AssociationSet Name="AdminUser" Association="InternetMarketEDMX.AdminUser">
             <End Role="Admin" EntitySet="AdminSet" />
-            <End Role="Basket" EntitySet="BasketSet" />
+            <End Role="User" EntitySet="UserSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
@@ -400,7 +341,7 @@
           <Property Name="NameCategory" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Brend" Relationship="InternetMarketEDMX.CategoryBrend" FromRole="Category" ToRole="Brend" />
           <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.CategoryNameProdact" FromRole="Category" ToRole="NameProdact" />
-          <NavigationProperty Name="Admin" Relationship="InternetMarketEDMX.AdminCategory" FromRole="Category" ToRole="Admin" />
+          <Property Name="Admin_Id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Brend">
           <Key>
@@ -411,7 +352,7 @@
           <NavigationProperty Name="Category" Relationship="InternetMarketEDMX.CategoryBrend" FromRole="Brend" ToRole="Category" />
           <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.BrendNameProdact" FromRole="Brend" ToRole="NameProdact" />
           <NavigationProperty Name="User" Relationship="InternetMarketEDMX.UserBrend" FromRole="Brend" ToRole="User" />
-          <NavigationProperty Name="Admin" Relationship="InternetMarketEDMX.AdminBrend" FromRole="Brend" ToRole="Admin" />
+          <Property Name="Admin_Id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="NameProdact">
           <Key>
@@ -423,8 +364,8 @@
           <NavigationProperty Name="Brend" Relationship="InternetMarketEDMX.BrendNameProdact" FromRole="NameProdact" ToRole="Brend" />
           <NavigationProperty Name="Cost" Relationship="InternetMarketEDMX.NameProdactCost" FromRole="NameProdact" ToRole="Cost" />
           <NavigationProperty Name="User" Relationship="InternetMarketEDMX.UserNameProdact" FromRole="NameProdact" ToRole="User" />
-          <NavigationProperty Name="Admin" Relationship="InternetMarketEDMX.AdminNameProdact" FromRole="NameProdact" ToRole="Admin" />
           <NavigationProperty Name="Basket" Relationship="InternetMarketEDMX.NameProdactBasket" FromRole="NameProdact" ToRole="Basket" />
+          <Property Name="Admin_Id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Cost">
           <Key>
@@ -434,8 +375,8 @@
           <Property Name="Prise" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.NameProdactCost" FromRole="Cost" ToRole="NameProdact" />
           <NavigationProperty Name="User" Relationship="InternetMarketEDMX.UserCost" FromRole="Cost" ToRole="User" />
-          <NavigationProperty Name="Admin" Relationship="InternetMarketEDMX.AdminCost" FromRole="Cost" ToRole="Admin" />
           <NavigationProperty Name="Basket" Relationship="InternetMarketEDMX.CostBasket" FromRole="Cost" ToRole="Basket" />
+          <Property Name="Admin_Id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -448,6 +389,7 @@
           <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.UserNameProdact" FromRole="User" ToRole="NameProdact" />
           <NavigationProperty Name="Cost" Relationship="InternetMarketEDMX.UserCost" FromRole="User" ToRole="Cost" />
           <NavigationProperty Name="Basket" Relationship="InternetMarketEDMX.UserBasket" FromRole="User" ToRole="Basket" />
+          <NavigationProperty Name="Admin" Relationship="InternetMarketEDMX.AdminUser" FromRole="User" ToRole="Admin" />
           </EntityType>
         <EntityType Name="Admin">
           <Key>
@@ -455,12 +397,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameAdmin" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Brend" Relationship="InternetMarketEDMX.AdminBrend" FromRole="Admin" ToRole="Brend" />
-          <NavigationProperty Name="Category" Relationship="InternetMarketEDMX.AdminCategory" FromRole="Admin" ToRole="Category" />
-          <NavigationProperty Name="NameProdact" Relationship="InternetMarketEDMX.AdminNameProdact" FromRole="Admin" ToRole="NameProdact" />
-          <NavigationProperty Name="Cost" Relationship="InternetMarketEDMX.AdminCost" FromRole="Admin" ToRole="Cost" />
           <NavigationProperty Name="Basket" Relationship="InternetMarketEDMX.AdminBasket" FromRole="Admin" ToRole="Basket" />
           <Property Name="PasswordAdmin" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="InternetMarketEDMX.AdminUser" FromRole="Admin" ToRole="User" />
         </EntityType>
         <EntityType Name="Basket">
           <Key>
@@ -500,22 +439,6 @@
           <End Type="InternetMarketEDMX.User" Role="User" Multiplicity="1" />
           <End Type="InternetMarketEDMX.Cost" Role="Cost" Multiplicity="*" />
         </Association>
-        <Association Name="AdminBrend">
-          <End Type="InternetMarketEDMX.Admin" Role="Admin" Multiplicity="1" />
-          <End Type="InternetMarketEDMX.Brend" Role="Brend" Multiplicity="*" />
-        </Association>
-        <Association Name="AdminCategory">
-          <End Type="InternetMarketEDMX.Admin" Role="Admin" Multiplicity="1" />
-          <End Type="InternetMarketEDMX.Category" Role="Category" Multiplicity="*" />
-        </Association>
-        <Association Name="AdminNameProdact">
-          <End Type="InternetMarketEDMX.Admin" Role="Admin" Multiplicity="1" />
-          <End Type="InternetMarketEDMX.NameProdact" Role="NameProdact" Multiplicity="*" />
-        </Association>
-        <Association Name="AdminCost">
-          <End Type="InternetMarketEDMX.Admin" Role="Admin" Multiplicity="1" />
-          <End Type="InternetMarketEDMX.Cost" Role="Cost" Multiplicity="*" />
-        </Association>
         <Association Name="NameProdactBasket">
           <End Type="InternetMarketEDMX.NameProdact" Role="NameProdact" Multiplicity="1" />
           <End Type="InternetMarketEDMX.Basket" Role="Basket" Multiplicity="*" />
@@ -529,8 +452,12 @@
           <End Type="InternetMarketEDMX.Basket" Role="Basket" Multiplicity="*" />
         </Association>
         <Association Name="AdminBasket">
+          <End Type="InternetMarketEDMX.Admin" Multiplicity="1" Role="Admin" />
+          <End Type="InternetMarketEDMX.Basket" Multiplicity="*" Role="Basket" />
+        </Association>
+        <Association Name="AdminUser">
           <End Type="InternetMarketEDMX.Admin" Role="Admin" Multiplicity="1" />
-          <End Type="InternetMarketEDMX.Basket" Role="Basket" Multiplicity="*" />
+          <End Type="InternetMarketEDMX.User" Role="User" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -543,6 +470,7 @@
         <MappingFragment StoreEntitySet="CategorySet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -551,6 +479,7 @@
         <MappingFragment StoreEntitySet="BrendSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -559,6 +488,7 @@
         <MappingFragment StoreEntitySet="NameProdactSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -567,6 +497,7 @@
         <MappingFragment StoreEntitySet="CostSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Prise" ColumnName="Prise" />
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -651,38 +582,6 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="AdminBrend" TypeName="InternetMarketEDMX.AdminBrend" StoreEntitySet="BrendSet">
-      <EndProperty Name="Admin">
-        <ScalarProperty Name="Id" ColumnName="Admin_Id" />
-      </EndProperty>
-      <EndProperty Name="Brend">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AdminCategory" TypeName="InternetMarketEDMX.AdminCategory" StoreEntitySet="CategorySet">
-      <EndProperty Name="Admin">
-        <ScalarProperty Name="Id" ColumnName="Admin_Id" />
-      </EndProperty>
-      <EndProperty Name="Category">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AdminNameProdact" TypeName="InternetMarketEDMX.AdminNameProdact" StoreEntitySet="NameProdactSet">
-      <EndProperty Name="Admin">
-        <ScalarProperty Name="Id" ColumnName="Admin_Id" />
-      </EndProperty>
-      <EndProperty Name="NameProdact">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AdminCost" TypeName="InternetMarketEDMX.AdminCost" StoreEntitySet="CostSet">
-      <EndProperty Name="Admin">
-        <ScalarProperty Name="Id" ColumnName="Admin_Id" />
-      </EndProperty>
-      <EndProperty Name="Cost">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="NameProdactBasket" TypeName="InternetMarketEDMX.NameProdactBasket" StoreEntitySet="BasketSet">
       <EndProperty Name="NameProdact">
         <ScalarProperty Name="Id" ColumnName="NameProdact_Id" />
@@ -712,6 +611,14 @@
         <ScalarProperty Name="Id" ColumnName="Admin_Id" />
       </EndProperty>
       <EndProperty Name="Basket">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AdminUser" TypeName="InternetMarketEDMX.AdminUser" StoreEntitySet="UserSet">
+      <EndProperty Name="Admin">
+        <ScalarProperty Name="Id" ColumnName="Admin_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

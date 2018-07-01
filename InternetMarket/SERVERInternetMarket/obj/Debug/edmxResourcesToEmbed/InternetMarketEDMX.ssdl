@@ -24,9 +24,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BrandName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin_Id" Type="int" Nullable="false" />
     <Property Name="Category_Id" Type="int" Nullable="false" />
     <Property Name="User_Id" Type="int" Nullable="false" />
-    <Property Name="Admin_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CategorySet">
     <Key>
@@ -42,9 +42,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Prise" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin_Id" Type="int" Nullable="false" />
     <Property Name="NameProdact_Id" Type="int" Nullable="false" />
     <Property Name="User_Id" Type="int" Nullable="false" />
-    <Property Name="Admin_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="NameProdactSet">
     <Key>
@@ -52,10 +52,10 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NameProduct" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin_Id" Type="int" Nullable="false" />
     <Property Name="Category_Id" Type="int" Nullable="false" />
     <Property Name="Brend_Id" Type="int" Nullable="false" />
     <Property Name="User_Id" Type="int" Nullable="false" />
-    <Property Name="Admin_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UserSet">
     <Key>
@@ -64,6 +64,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NameUser" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Pass" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_AdminBasket">
     <End Role="AdminSet" Type="Self.AdminSet" Multiplicity="1" />
@@ -77,50 +78,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_AdminBrend">
+  <Association Name="FK_AdminUser">
     <End Role="AdminSet" Type="Self.AdminSet" Multiplicity="1" />
-    <End Role="BrendSet" Type="Self.BrendSet" Multiplicity="*" />
+    <End Role="UserSet" Type="Self.UserSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AdminSet">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="BrendSet">
-        <PropertyRef Name="Admin_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AdminCategory">
-    <End Role="AdminSet" Type="Self.AdminSet" Multiplicity="1" />
-    <End Role="CategorySet" Type="Self.CategorySet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AdminSet">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CategorySet">
-        <PropertyRef Name="Admin_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AdminCost">
-    <End Role="AdminSet" Type="Self.AdminSet" Multiplicity="1" />
-    <End Role="CostSet" Type="Self.CostSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AdminSet">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CostSet">
-        <PropertyRef Name="Admin_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AdminNameProdact">
-    <End Role="AdminSet" Type="Self.AdminSet" Multiplicity="1" />
-    <End Role="NameProdactSet" Type="Self.NameProdactSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AdminSet">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="NameProdactSet">
+      <Dependent Role="UserSet">
         <PropertyRef Name="Admin_Id" />
       </Dependent>
     </ReferentialConstraint>
@@ -257,21 +222,9 @@
       <End Role="AdminSet" EntitySet="AdminSet" />
       <End Role="BasketSet" EntitySet="BasketSet" />
     </AssociationSet>
-    <AssociationSet Name="FK_AdminBrend" Association="Self.FK_AdminBrend">
+    <AssociationSet Name="FK_AdminUser" Association="Self.FK_AdminUser">
       <End Role="AdminSet" EntitySet="AdminSet" />
-      <End Role="BrendSet" EntitySet="BrendSet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AdminCategory" Association="Self.FK_AdminCategory">
-      <End Role="AdminSet" EntitySet="AdminSet" />
-      <End Role="CategorySet" EntitySet="CategorySet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AdminCost" Association="Self.FK_AdminCost">
-      <End Role="AdminSet" EntitySet="AdminSet" />
-      <End Role="CostSet" EntitySet="CostSet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AdminNameProdact" Association="Self.FK_AdminNameProdact">
-      <End Role="AdminSet" EntitySet="AdminSet" />
-      <End Role="NameProdactSet" EntitySet="NameProdactSet" />
+      <End Role="UserSet" EntitySet="UserSet" />
     </AssociationSet>
     <AssociationSet Name="FK_BrendNameProdact" Association="Self.FK_BrendNameProdact">
       <End Role="BrendSet" EntitySet="BrendSet" />

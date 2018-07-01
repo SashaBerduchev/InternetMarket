@@ -6,6 +6,7 @@
         <MappingFragment StoreEntitySet="CategorySet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -14,6 +15,7 @@
         <MappingFragment StoreEntitySet="BrendSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -22,6 +24,7 @@
         <MappingFragment StoreEntitySet="NameProdactSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -30,6 +33,7 @@
         <MappingFragment StoreEntitySet="CostSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Prise" ColumnName="Prise" />
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -114,38 +118,6 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="AdminBrend" TypeName="InternetMarketEDMX.AdminBrend" StoreEntitySet="BrendSet">
-      <EndProperty Name="Admin">
-        <ScalarProperty Name="Id" ColumnName="Admin_Id" />
-      </EndProperty>
-      <EndProperty Name="Brend">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AdminCategory" TypeName="InternetMarketEDMX.AdminCategory" StoreEntitySet="CategorySet">
-      <EndProperty Name="Admin">
-        <ScalarProperty Name="Id" ColumnName="Admin_Id" />
-      </EndProperty>
-      <EndProperty Name="Category">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AdminNameProdact" TypeName="InternetMarketEDMX.AdminNameProdact" StoreEntitySet="NameProdactSet">
-      <EndProperty Name="Admin">
-        <ScalarProperty Name="Id" ColumnName="Admin_Id" />
-      </EndProperty>
-      <EndProperty Name="NameProdact">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AdminCost" TypeName="InternetMarketEDMX.AdminCost" StoreEntitySet="CostSet">
-      <EndProperty Name="Admin">
-        <ScalarProperty Name="Id" ColumnName="Admin_Id" />
-      </EndProperty>
-      <EndProperty Name="Cost">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="NameProdactBasket" TypeName="InternetMarketEDMX.NameProdactBasket" StoreEntitySet="BasketSet">
       <EndProperty Name="NameProdact">
         <ScalarProperty Name="Id" ColumnName="NameProdact_Id" />
@@ -175,6 +147,14 @@
         <ScalarProperty Name="Id" ColumnName="Admin_Id" />
       </EndProperty>
       <EndProperty Name="Basket">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AdminUser" TypeName="InternetMarketEDMX.AdminUser" StoreEntitySet="UserSet">
+      <EndProperty Name="Admin">
+        <ScalarProperty Name="Id" ColumnName="Admin_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

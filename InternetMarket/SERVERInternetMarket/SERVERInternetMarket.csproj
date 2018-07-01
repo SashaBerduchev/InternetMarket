@@ -176,8 +176,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="InternetMarket.mdf">
+    <Content Include="InternetMarketDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="InternetMarketDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>InternetMarketDB.mdf</DependentUpon>
     </Content>
     <Content Include="InternetMarketEDMX.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -189,10 +193,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>InternetMarketEDMX.cs</LastGenOutput>
       <DependentUpon>InternetMarketEDMX.edmx</DependentUpon>
-    </Content>
-    <Content Include="InternetMarket_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>InternetMarket.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

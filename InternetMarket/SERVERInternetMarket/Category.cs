@@ -23,11 +23,11 @@ namespace SERVERInternetMarket
     
         public int Id { get; set; }
         public string NameCategory { get; set; }
+        public int Admin_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Brend> Brend { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NameProdact> NameProdact { get; set; }
-        public virtual Admin Admin { get; set; }
     }
 }

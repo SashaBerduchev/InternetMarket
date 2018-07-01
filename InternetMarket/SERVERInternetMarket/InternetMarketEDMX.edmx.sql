@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/01/2018 10:31:28
--- Generated from EDMX file: D:\InternetMarket\SERVERInternetMarket\InternetMarketEDMX.edmx
+-- Date Created: 07/01/2018 13:35:27
+-- Generated from EDMX file: D:\TeamServiseGit\InternetMarket\SERVERInternetMarket\InternetMarketEDMX.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -38,18 +38,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UserCost]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CostSet] DROP CONSTRAINT [FK_UserCost];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AdminBrend]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[BrendSet] DROP CONSTRAINT [FK_AdminBrend];
-GO
-IF OBJECT_ID(N'[dbo].[FK_AdminCategory]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CategorySet] DROP CONSTRAINT [FK_AdminCategory];
-GO
-IF OBJECT_ID(N'[dbo].[FK_AdminNameProdact]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[NameProdactSet] DROP CONSTRAINT [FK_AdminNameProdact];
-GO
-IF OBJECT_ID(N'[dbo].[FK_AdminCost]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CostSet] DROP CONSTRAINT [FK_AdminCost];
-GO
 IF OBJECT_ID(N'[dbo].[FK_NameProdactBasket]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[BasketSet] DROP CONSTRAINT [FK_NameProdactBasket];
 GO
@@ -61,6 +49,9 @@ IF OBJECT_ID(N'[dbo].[FK_UserBasket]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_AdminBasket]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[BasketSet] DROP CONSTRAINT [FK_AdminBasket];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AdminUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserSet] DROP CONSTRAINT [FK_AdminUser];
 GO
 
 -- --------------------------------------------------
@@ -105,9 +96,9 @@ GO
 CREATE TABLE [dbo].[BrendSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [BrandName] nvarchar(max)  NOT NULL,
+    [Admin_Id] int  NOT NULL,
     [Category_Id] int  NOT NULL,
-    [User_Id] int  NOT NULL,
-    [Admin_Id] int  NOT NULL
+    [User_Id] int  NOT NULL
 );
 GO
 
@@ -115,10 +106,10 @@ GO
 CREATE TABLE [dbo].[NameProdactSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [NameProduct] nvarchar(max)  NOT NULL,
+    [Admin_Id] int  NOT NULL,
     [Category_Id] int  NOT NULL,
     [Brend_Id] int  NOT NULL,
-    [User_Id] int  NOT NULL,
-    [Admin_Id] int  NOT NULL
+    [User_Id] int  NOT NULL
 );
 GO
 
@@ -126,9 +117,9 @@ GO
 CREATE TABLE [dbo].[CostSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Prise] nvarchar(max)  NOT NULL,
+    [Admin_Id] int  NOT NULL,
     [NameProdact_Id] int  NOT NULL,
-    [User_Id] int  NOT NULL,
-    [Admin_Id] int  NOT NULL
+    [User_Id] int  NOT NULL
 );
 GO
 
@@ -136,7 +127,8 @@ GO
 CREATE TABLE [dbo].[UserSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [NameUser] nvarchar(max)  NOT NULL,
-    [Pass] nvarchar(max)  NOT NULL
+    [Pass] nvarchar(max)  NOT NULL,
+    [Admin_Id] int  NOT NULL
 );
 GO
 
@@ -313,66 +305,6 @@ ON [dbo].[CostSet]
     ([User_Id]);
 GO
 
--- Creating foreign key on [Admin_Id] in table 'BrendSet'
-ALTER TABLE [dbo].[BrendSet]
-ADD CONSTRAINT [FK_AdminBrend]
-    FOREIGN KEY ([Admin_Id])
-    REFERENCES [dbo].[AdminSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_AdminBrend'
-CREATE INDEX [IX_FK_AdminBrend]
-ON [dbo].[BrendSet]
-    ([Admin_Id]);
-GO
-
--- Creating foreign key on [Admin_Id] in table 'CategorySet'
-ALTER TABLE [dbo].[CategorySet]
-ADD CONSTRAINT [FK_AdminCategory]
-    FOREIGN KEY ([Admin_Id])
-    REFERENCES [dbo].[AdminSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_AdminCategory'
-CREATE INDEX [IX_FK_AdminCategory]
-ON [dbo].[CategorySet]
-    ([Admin_Id]);
-GO
-
--- Creating foreign key on [Admin_Id] in table 'NameProdactSet'
-ALTER TABLE [dbo].[NameProdactSet]
-ADD CONSTRAINT [FK_AdminNameProdact]
-    FOREIGN KEY ([Admin_Id])
-    REFERENCES [dbo].[AdminSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_AdminNameProdact'
-CREATE INDEX [IX_FK_AdminNameProdact]
-ON [dbo].[NameProdactSet]
-    ([Admin_Id]);
-GO
-
--- Creating foreign key on [Admin_Id] in table 'CostSet'
-ALTER TABLE [dbo].[CostSet]
-ADD CONSTRAINT [FK_AdminCost]
-    FOREIGN KEY ([Admin_Id])
-    REFERENCES [dbo].[AdminSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_AdminCost'
-CREATE INDEX [IX_FK_AdminCost]
-ON [dbo].[CostSet]
-    ([Admin_Id]);
-GO
-
 -- Creating foreign key on [NameProdact_Id] in table 'BasketSet'
 ALTER TABLE [dbo].[BasketSet]
 ADD CONSTRAINT [FK_NameProdactBasket]
@@ -430,6 +362,21 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_AdminBasket'
 CREATE INDEX [IX_FK_AdminBasket]
 ON [dbo].[BasketSet]
+    ([Admin_Id]);
+GO
+
+-- Creating foreign key on [Admin_Id] in table 'UserSet'
+ALTER TABLE [dbo].[UserSet]
+ADD CONSTRAINT [FK_AdminUser]
+    FOREIGN KEY ([Admin_Id])
+    REFERENCES [dbo].[AdminSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AdminUser'
+CREATE INDEX [IX_FK_AdminUser]
+ON [dbo].[UserSet]
     ([Admin_Id]);
 GO
 
