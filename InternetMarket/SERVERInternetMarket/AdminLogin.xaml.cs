@@ -38,11 +38,11 @@ namespace SERVERInternetMarket
             };
             contex.AdminSet.Add(loginset);
             contex.SaveChanges();
-            // MessageBox.Show( "Your admin name save, please login now", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-            MainWindow main = new MainWindow();
-            main.Show();
+           // MessageBox.Show( "Your admin name save, please login now", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
             LoginText.Text = null;
             PassText.Password = null;
+            MainWindow main = new MainWindow();
+            main.Show();
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)

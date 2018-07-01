@@ -22,10 +22,8 @@ namespace SERVERInternetMarket
     
         public int Id { get; set; }
         public string Prise { get; set; }
-        public int Admin_Id { get; set; }
     
         public virtual NameProdact NameProdact { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Basket> Basket { get; set; }
     }

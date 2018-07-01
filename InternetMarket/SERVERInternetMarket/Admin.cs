@@ -18,7 +18,6 @@ namespace SERVERInternetMarket
         public Admin()
         {
             this.Basket = new HashSet<Basket>();
-            this.User = new HashSet<User>();
         }
     
         public int Id { get; set; }
@@ -27,7 +26,6 @@ namespace SERVERInternetMarket
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Basket> Basket { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual User User { get; set; }
     }
 }

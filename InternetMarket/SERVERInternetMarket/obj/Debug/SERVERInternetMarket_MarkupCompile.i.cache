@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\TeamServiseGit\InternetMarket\SERVERInternetMarket\obj\Debug\
+D:\InternetMarket\SERVERInternetMarket\obj\Debug\
 SERVERInternetMarket
 none
 false
 DEBUG;TRACE
-D:\TeamServiseGit\InternetMarket\SERVERInternetMarket\App.xaml
+D:\InternetMarket\SERVERInternetMarket\App.xaml
 2944337560
 51230466149
 26538692356
-191744505822
+191577514731
 AdminLogin.xaml;MainWindow.xaml;
 
 False
